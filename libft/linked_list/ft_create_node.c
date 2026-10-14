@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "linked_list.h"
 
 t_node	*ft_create_node(void *content)
 {

@@ -12,12 +12,13 @@
 
 #include "../../../includes/private/pr_parser.h"
 
-int	parser_controller(char **av, t_data_ *data)
+int	parser_controller(const char *path, t_data *data)
 {
-	if (!split_archive(av, data))
+	if (!path || !data || !split_archive(path, data))
 		return (0);
 	if (!valid_texture(data))
 		return (0);
 	if (!valid_map(data))
 		return (0);
+	return (1);
 }

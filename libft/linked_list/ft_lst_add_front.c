@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "linked_list.h"
 
 void	ft_lst_add_front(t_list **lst, t_list *new)
 {

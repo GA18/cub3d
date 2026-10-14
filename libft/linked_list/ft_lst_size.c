@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "linked_list.h"
 
 int	ft_lst_size(t_list *lst)
 {

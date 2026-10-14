@@ -15,6 +15,6 @@
 
 # include "../private/pr_parser.h"
 
-int	parser_controller(char **av, t_data_ *data);
+int	parser_controller(const char *path, t_data *data);
 
 #endif

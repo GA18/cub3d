@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "linked_list.h"
 
 void	ft_lst_clear(t_list **lst, void (*del)(void *))
 {

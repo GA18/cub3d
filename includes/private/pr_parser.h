@@ -15,39 +15,43 @@
 
 # include "../../libft/libft.h"
 
-typedef struct s_map_
+typedef struct s_rgb
 {
-	char	**map_;
-}	t_map_;
+	int	r;
+	int	g;
+	int	b;
+}	t_rgb;
 
-typedef struct s_rgb_
+typedef struct s_data
 {
-	char			**flag_;
-	unsigned int	rgb_;
-}	t_rgb_;
+	char	*north_texture;
+	char	*south_texture;
+	char	*west_texture;
+	char	*east_texture;
+	t_rgb	floor;
+	t_rgb	ceiling;
+	int		floor_set;
+	int		ceiling_set;
+	char	**map;
+	int		map_height;
+	int		map_width;
+	int		player_x;
+	int		player_y;
+	char	player_dir;
+}	t_data;
 
-typedef struct s_test
-{
-	int	r:8;
-	int	g:8;
-	int	b:8;
-}	t_test;
-
-typedef struct s_path_
-{
-	char	**identifier_;
-	char	**path_;
-}	t_path_;
-
-typedef struct s_data_
-{
-	struct s_path_	*path_;
-	struct s_rgb_	*rgb;
-	struct s_map_	*map;
-}	t_data_;
-
-int	split_archive(char **av, t_data_ *data);
-int	valid_texture(t_data_ *data);
-int	valid_map(t_data_ *data);
+int		parser_controller(const char *path, t_data *data);
+int		split_archive(const char *path, t_data *data);
+char	*trim_line(char *line);
+int		parse_color(char *value, t_rgb *color);
+int		parse_config(char *line, t_data *data);
+int		is_player(char c);
+int		is_walkable(char c);
+char	map_at(t_data *data, int x, int y);
+int		is_closed_cell(t_data *data, int x, int y);
+int		inspect_map_line(t_data *data, int y);
+int		valid_texture(t_data *data);
+int		valid_map(t_data *data);
+void	free_data(t_data *data);
 
 #endif

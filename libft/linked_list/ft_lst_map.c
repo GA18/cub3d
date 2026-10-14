@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "linked_list.h"
 
 t_list	*ft_lst_map(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
