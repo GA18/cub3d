@@ -6,7 +6,7 @@
 /*   By: g-alves- <g-alves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 16:47:50 by g-alves-          #+#    #+#             */
-/*   Updated: 2026/10/01 16:31:49 by g-alves-         ###   ########.fr       */
+/*   Updated: 2026/10/07 16:34:17 by g-alves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ typedef struct s_rgb_
 	char			**flag_;
 	unsigned int	rgb_;
 }	t_rgb_;
+
+typedef struct s_test
+{
+	int	r:8;
+	int	g:8;
+	int	b:8;
+}	t_test;
 
 typedef struct s_path_
 {
