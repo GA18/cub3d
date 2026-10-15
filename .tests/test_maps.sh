@@ -29,7 +29,7 @@ for file in "$VALID_DIR"/*.cub; do
 done
 
 printf '\n%s\n' '=== Mapas invalidos ==='
-for file in "$INVALID_DIR"/*.cub; do
+for file in "$INVALID_DIR"/*.cub "$INVALID_DIR"/*.cube; do
 	[ -f "$file" ] || continue
 	invalid_total=$((invalid_total + 1))
 	if "$PROGRAM" "$file" >/dev/null 2>&1; then

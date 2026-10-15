@@ -75,7 +75,7 @@ int	split_archive(const char *path, t_data *data)
 	char	*line;
 
 	if (!path || ft_strlen(path) < 5
-		|| ft_strncmp(path + ft_strlen(path) - 4, ".cub", 4))
+		|| ft_strncmp(path + ft_strlen(path) - 4, ".cub", 5))
 		// ft_printf("Erro: caminho ou extensao do arquivo invalida\n");
 		return (0);
 	fd = open(path, O_RDONLY);
