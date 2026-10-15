@@ -31,13 +31,11 @@ static int	find_player(t_data *data)
 	return (players);
 }
 
-int	valid_map(t_data *data)
+static int	validate_closed_cells(t_data *data)
 {
 	int	x;
 	int	y;
 
-	if (!data->map || data->map_height < 3 || find_player(data) != 1)
-		return (0);
 	y = 0;
 	while (y < data->map_height)
 	{
@@ -46,11 +44,21 @@ int	valid_map(t_data *data)
 		{
 			if (is_walkable(map_at(data, x, y))
 				&& !is_closed_cell(data, x, y))
-				// ft_printf("Erro: celula caminhavel aberta no mapa\n");
 				return (0);
 			x++;
 		}
 		y++;
 	}
+	return (1);
+}
+
+int	valid_map(t_data *data)
+{
+	if (!data->map || data->map_height < 3 || find_player(data) != 1)
+		return (0);
+	if (!validate_closed_cells(data))
+		return (0);
+	if (validate_map_connectivity(data) != 1)
+		return (0);
 	return (1);
 }

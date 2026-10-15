@@ -22,6 +22,12 @@ typedef struct s_rgb
 	int	b;
 }	t_rgb;
 
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
 typedef struct s_data
 {
 	char	*north_texture;
@@ -40,6 +46,14 @@ typedef struct s_data
 	char	player_dir;
 }	t_data;
 
+typedef struct s_flood
+{
+	t_data	*data;
+	char	**visited;
+	t_point	*queue;
+	int		tail;
+}	t_flood;
+
 int		parser_controller(const char *path, t_data *data);
 int		split_archive(const char *path, t_data *data);
 char	*trim_line(char *line);
@@ -52,6 +66,9 @@ int		is_closed_cell(t_data *data, int x, int y);
 int		inspect_map_line(t_data *data, int y);
 int		valid_texture(t_data *data);
 int		valid_map(t_data *data);
+int		count_walkable_cells(t_data *data);
+char	**allocate_visited(t_data *data);
+int		validate_map_connectivity(t_data *data);
 void	free_data(t_data *data);
 
 #endif

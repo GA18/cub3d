@@ -11,6 +11,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 SRCS = core/main.c \
 	core/src/parser/parser_controller.c \
 	core/src/parser/map_cells.c \
+	core/src/parser/map_connectivity.c \
+	core/src/parser/map_connectivity_utils.c \
 	core/src/parser/parse_color.c \
 	core/src/parser/parse_config.c \
 	core/src/parser/read_archive.c \
