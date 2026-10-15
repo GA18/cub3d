@@ -46,6 +46,7 @@ int	valid_map(t_data *data)
 		{
 			if (is_walkable(map_at(data, x, y))
 				&& !is_closed_cell(data, x, y))
+				// ft_printf("Erro: celula caminhavel aberta no mapa\n");
 				return (0);
 			x++;
 		}

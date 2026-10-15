@@ -1,0 +1,10 @@
+NO ./north.xpm
+SO ./south.xpm
+WE ./west.xpm
+EA ./east.xpm
+F 1,2,3
+C 252,253,254
+111111
+1N0001
+100001
+111111

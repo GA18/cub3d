@@ -55,6 +55,7 @@ int	inspect_map_line(t_data *data, int y)
 	{
 		cell = data->map[y][x];
 		if (cell != '0' && cell != '1' && cell != ' ' && !is_player(cell))
+			// ft_printf("Erro: caractere invalido no mapa\n");
 			return (-1);
 		if (is_player(cell))
 		{

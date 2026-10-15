@@ -1,0 +1,9 @@
+NO ./north.xpm
+SO ./south.xpm
+WE ./west.xpm
+EA ./east.xpm
+F 10,20,30 extra
+C 255,255,255
+111
+1N1
+111

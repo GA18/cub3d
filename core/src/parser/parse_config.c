@@ -41,9 +41,11 @@ static int	parse_texture_config(char *line, t_data *data)
 
 	destination = texture_destination(line, data);
 	if (!destination || *destination)
+		// ft_printf("Erro: textura duplicada\n");
 		return (0);
 	value = trim_line(ft_substr(line, 3, ft_strlen(line) - 3));
 	if (!value || !*value)
+		// ft_printf("Erro: caminho de textura vazio\n");
 		return (free(value), 0);
 	*destination = value;
 	return (1);
@@ -65,6 +67,7 @@ static int	parse_color_config(char *line, t_data *data)
 	else if (ft_strncmp(line, "F ", 2) && ft_strncmp(line, "F\t", 2))
 		return (0);
 	if (*is_set)
+		// ft_printf("Erro: configuracao de cor duplicada\n");
 		return (0);
 	value = trim_line(ft_substr(line, 2, ft_strlen(line) - 2));
 	if (!value || !parse_color(value, color))
@@ -81,5 +84,6 @@ int	parse_config(char *line, t_data *data)
 	if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "F\t", 2)
 		|| !ft_strncmp(line, "C ", 2) || !ft_strncmp(line, "C\t", 2))
 		return (parse_color_config(line, data));
+	// ft_printf("Erro: linha de configuracao desconhecida\n");
 	return (0);
 }

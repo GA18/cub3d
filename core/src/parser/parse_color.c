@@ -20,12 +20,14 @@ static int	parse_rgb_value(char *value, int *result)
 	while (*value == ' ' || *value == '\t')
 		value++;
 	if (!ft_isdigit(*value))
+		// ft_printf("Erro: componente de cor nao numerico\n");
 		return (0);
 	number = 0;
 	while (ft_isdigit(*value))
 	{
 		number = number * 10 + (*value - '0');
 		if (number > 255)
+			// ft_printf("Erro: componente de cor fora do intervalo 0-255\n");
 			return (0);
 		value++;
 	}
@@ -33,6 +35,7 @@ static int	parse_rgb_value(char *value, int *result)
 	while (*end == ' ' || *end == '\t')
 		end++;
 	if (*end != '\0')
+		// ft_printf("Erro: caracteres extras no componente de cor\n");
 		return (0);
 	*result = number;
 	return (1);
@@ -55,6 +58,7 @@ int	parse_color(char *value, t_rgb *color)
 
 	parts = ft_split(value, ',');
 	if (!parts || !parts[0] || !parts[1] || !parts[2] || parts[3])
+		// ft_printf("Erro: formato de cor invalido\n");
 		return (free_parts(parts), 0);
 	ok = parse_rgb_value(parts[0], &color->r);
 	if (ok)
