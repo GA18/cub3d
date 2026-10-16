@@ -1,0 +1,12 @@
+*.o
+*.a
+cub3d
+cub3D
+parser_check
+library/mlx/obj/
+library/mlx/libmlx.a
+library/mlx/libmlx_Linux.a
+library/mlx/makefile.gen
+library/mlx/test/makefile.gen
+library/mlx/test/*.o
+library/mlx/test/mlx-test

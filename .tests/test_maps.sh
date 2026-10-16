@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-PROGRAM="$ROOT_DIR/cub3d"
+PROGRAM="$ROOT_DIR/parser_check"
 VALID_DIR="$ROOT_DIR/.tests/valid_maps"
 INVALID_DIR="$ROOT_DIR/.tests/invalid_maps"
 

@@ -6,25 +6,19 @@
 /*   By: g-alves- <g-alves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 16:46:02 by g-alves-          #+#    #+#             */
-/*   Updated: 2026/10/15 16:51:49 by g-alves-         ###   ########.fr       */
+/*   Updated: 2026/10/16 19:11:23 by g-alves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/public/pu_parser.h"
+#include "game/runtime.h"
 
 int	main(int ac, char **av)
 {
-	t_data	data;
+	t_game	game;
 
-	if (ac != 2)
+	if (runtime_args(ac, av))
 		return (1);
-	ft_bzero(&data, sizeof(data));
-	if (!parser_controller(av[1], &data))
-	{
-		ft_printf("Mapa inválido!");
-		return (free_data(&data), 1);
-	}
-	free_data(&data);
-	ft_printf("mapa válido!");
-	return (0);
+	if (runtime_setup(&game, av[1]))
+		return (1);
+	return (runtime_run(&game));
 }
