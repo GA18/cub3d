@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   struct.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: g-alves- <g-alves-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/16 19:17:29 by g-alves-          #+#    #+#             */
+/*   Updated: 2026/10/16 19:17:29 by g-alves-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCT_H
 # define STRUCT_H
 
@@ -66,6 +78,7 @@ typedef struct s_game
 	t_scene		scene;
 	t_img		frame;
 	t_player	player;
+	t_raycast	raycast;
 	t_view		view;
 	double		last_frame;
 	int			keys[GK_COUNT];

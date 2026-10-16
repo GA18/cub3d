@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   runtime.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: g-alves- <g-alves-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/16 19:17:29 by g-alves-          #+#    #+#             */
+/*   Updated: 2026/10/16 19:26:32 by g-alves-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shared/cub3d.h"
 #include "game/runtime.h"
 #include "game/setup.h"
 
-int runtime_args(int argc, char **argv)
+int	runtime_args(int argc, char **argv)
 {
-	int l;
-	char *m;
+	int	l;
+	char	*m;
 
 	m = "Usage: ./cub3d <map.cub>";
 	if (argc != 2)
@@ -16,7 +28,7 @@ int runtime_args(int argc, char **argv)
 	return (0);
 }
 
-int runtime_cleanup(t_game *g)
+int	runtime_cleanup(t_game *g)
 {
 	if (g->frame.ptr)
 		mlx_destroy_image(g->mlx, g->frame.ptr);
@@ -31,11 +43,9 @@ int runtime_cleanup(t_game *g)
 	return (0);
 }
 
-
-int runtime_setup(t_game *g, char *map_path)
+int	runtime_setup(t_game *g, char *map_path)
 {
-	*g = (t_game) { 0 };
-
+	*g = (t_game){0};
 	if (!parser_controller(map_path, &g->scene))
 		return (runtime_cleanup(g), 1);
 	if (setup_game(g))
@@ -43,14 +53,14 @@ int runtime_setup(t_game *g, char *map_path)
 	return (0);
 }
 
-int runtime_run(t_game *g)
+int	runtime_run(t_game *g)
 {
 	mlx_loop(g->mlx);
 	runtime_cleanup(g);
 	return (0);
 }
 
-int runtime_close(t_game *g)
+int	runtime_close(t_game *g)
 {
 	mlx_loop_end(g->mlx);
 	return (0);

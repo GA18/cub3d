@@ -26,7 +26,8 @@ PARSER_OBJS = $(PARSER_SRCS:.c=.o)
 
 GAME_SRCS = core/main.c core/runtime.c core/setup.c core/common.c \
 	core/game/game.c core/input/hook.c core/player/player.c \
-	core/render/raycast.c core/render/screen.c
+	core/render/raycast.c core/render/render_common.c \
+	core/render/render_2d.c core/render/render_3d.c core/render/screen.c
 GAME_OBJS = $(GAME_SRCS:.c=.o)
 PARSER_MAIN_OBJ = core/parser_main.o
 

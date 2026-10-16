@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycast.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: g-alves- <g-alves-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/16 19:17:29 by g-alves-          #+#    #+#             */
+/*   Updated: 2026/10/16 19:26:32 by g-alves-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shared/cub3d.h"
 #include <math.h>
 
-void raycast_setup(t_game *g, t_raycast *rc)
+void	raycast_setup(t_game *g, t_raycast *rc)
 {
-	rc->state.map_x = (int) floor (g->player.pos_x);
-	rc->state.map_y = (int) floor (g->player.pos_y);
+	rc->state.map_x = (int)floor(g->player.pos_x);
+	rc->state.map_y = (int)floor(g->player.pos_y);
 	rc->state.delta_x = 1e30;
 	rc->state.delta_y = 1e30;
 	if (rc->ray_x != 0.0)
@@ -13,21 +25,25 @@ void raycast_setup(t_game *g, t_raycast *rc)
 		rc->state.delta_y = fabs(1.0 / rc->ray_y);
 	rc->state.step_x = 1;
 	rc->state.step_y = 1;
-	rc->state.side_x = (rc->state.map_x + 1 - g->player.pos_x) * rc->state.delta_x;
-	rc->state.side_y = (rc->state.map_y + 1 - g->player.pos_y) * rc->state.delta_y;
+	rc->state.side_x = (rc->state.map_x + 1 - g->player.pos_x)
+			* rc->state.delta_x;
+	rc->state.side_y = (rc->state.map_y + 1 - g->player.pos_y)
+			* rc->state.delta_y;
 	if (rc->ray_x < 0.0)
 	{
 		rc->state.step_x = -1;
-		rc->state.side_x = (g->player.pos_x - rc->state.map_x) * rc->state.delta_x;
+		rc->state.side_x = (g->player.pos_x - rc->state.map_x)
+		* rc->state.delta_x;
 	}
 	if (rc->ray_y < 0.0)
 	{
 		rc->state.step_y = -1;
-		rc->state.side_y = (g->player.pos_y - rc->state.map_y) * rc->state.delta_y;
+		rc->state.side_y = (g->player.pos_y - rc->state.map_y)
+		* rc->state.delta_y;
 	}
 }
 
-void raycast_advance(t_raycast *rc)
+void	raycast_advance(t_raycast *rc)
 {
 	if (rc->state.side_x < rc->state.side_y)
 	{
@@ -45,17 +61,15 @@ void raycast_advance(t_raycast *rc)
 	}
 }
 
-int raycast_in_boundaries(t_game *g, t_raycast *rc)
+int	raycast_in_boundaries(t_game *g, t_raycast *rc)
 {
-	return (
-		rc->state.map_x >= 0 &&
-		rc->state.map_y >= 0 &&
-		rc->state.map_x < g->scene.map_width &&
-		rc->state.map_y < g->scene.map_height
-	);
+	return (rc->state.map_x >= 0
+		&& rc->state.map_y >= 0
+		&& rc->state.map_x < g->scene.map_width
+		&& rc->state.map_y < g->scene.map_height);
 }
 
-int raycast_is_hit(t_game *g, t_raycast *rc)
+int	raycast_is_hit(t_game *g, t_raycast *rc)
 {
 	if (is_walkable(map_at(&g->scene, rc->state.map_x, rc->state.map_y)))
 		return (0);
@@ -68,9 +82,9 @@ int raycast_is_hit(t_game *g, t_raycast *rc)
 	return (1);
 }
 
-int raycast_cast(t_game *g, t_raycast *rc)
+int	raycast_cast(t_game *g, t_raycast *rc)
 {
-	int steps;
+	int	steps;
 
 	steps = 0;
 	raycast_setup(g, rc);

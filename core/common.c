@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   common.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: g-alves- <g-alves-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/16 19:17:29 by g-alves-          #+#    #+#             */
+/*   Updated: 2026/10/16 19:26:32 by g-alves-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <sys/time.h>
 #include "shared/enum.h"
 #include "shared/const.h"
 
-int common_kid(int keycode)
+int	common_kid(int keycode)
 {
 	if (keycode == K_A)
 		return (GK_LEFT);
@@ -22,9 +34,9 @@ int common_kid(int keycode)
 	return (-1);
 }
 
-double common_now(void)
+double	common_now(void)
 {
-	struct timeval time;
+	struct timeval	time;
 
 	gettimeofday(&time, NULL);
 	return (time.tv_sec + time.tv_usec / 1e6);
